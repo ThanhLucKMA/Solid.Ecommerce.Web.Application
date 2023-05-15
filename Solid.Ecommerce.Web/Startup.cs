@@ -83,6 +83,10 @@ public class Startup
 
         app.UseSession();
         app.UseAuthentication();
+<<<<<<< HEAD
+        app.UseAuthorization();
+=======
+>>>>>>> 6d568daec5f91849aaf5361644df63871ad916f8
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapRazorPages();
