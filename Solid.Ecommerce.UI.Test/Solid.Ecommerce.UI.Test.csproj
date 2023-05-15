@@ -23,7 +23,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Solid.Ecommerce.Application\Solid.Ecommerce.Application.csproj" />
     <ProjectReference Include="..\Solid.Ecommerce.Infrastructure\Solid.Ecommerce.Infrastructure.csproj" />
+<<<<<<< HEAD
     <ProjectReference Include="..\Solid.Ecommerce.Shared.EntityModels.SqlServer\Solid.Ecommerce.Shared.EntityModels.SqlServer.csproj" />
+=======
+>>>>>>> 6d568daec5f91849aaf5361644df63871ad916f8
   </ItemGroup>
 
 </Project>
