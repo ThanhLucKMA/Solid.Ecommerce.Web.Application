@@ -1,4 +1,5 @@
-﻿namespace Solid.Ecommerce.Infrastructure.Extensions;
+﻿
+namespace Solid.Ecommerce.Infrastructure.Extensions;
 public static class ProductRepositoryExtension
 {
     /// <summary>
@@ -9,7 +10,7 @@ public static class ProductRepositoryExtension
     public static async Task<IList<Product>> GetAll(this IRepository<Product> repository)
     {
         var products = new List<Product>();
-        
+
         await repository.ApplicationDBContext.DbContext.LoadStoredProc("spGetWorks")
             //.WithSqlParam("sampleParam", "sampleValue") // Sample code to add params to provided stored procedure
             .ExecuteStoredProcAsync(result =>
@@ -19,8 +20,6 @@ public static class ProductRepositoryExtension
                 // Sample code to read to value
                 // var getOne = result.ReadToValue<int>() 
             });
-
-
         return products;
     }
 }

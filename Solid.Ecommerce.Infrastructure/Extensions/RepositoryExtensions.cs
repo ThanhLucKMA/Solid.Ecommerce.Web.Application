@@ -1,23 +1,36 @@
-﻿namespace Solid.Ecommerce.Infrastructure.Extensions;
+﻿
+using System.Runtime.CompilerServices;
+
+namespace Solid.Ecommerce.Infrastructure.Extensions;
+
 public static class RepositoryExtensions
 {
     /// <summary>
     /// Filter data with the query
     /// </summary>
-    public static IQueryable<T> Where<T>(this IRepository<T> repository, Expression<Func<T, bool>> predicate
+    public static IQueryable<T> Where<T>
+        (
+        this IRepository<T> repository, 
+        Expression<Func<T, bool>> predicate
         ) where T : class
     {
         return repository.Entities.Where(predicate);
     }
 
+    public static async Task<List<T>> ToListAsync<T> (this IRepository<T> repository) where T : class
+    {
+        return await repository.Entities.ToListAsync();
+    }
+
     /// <summary>
     /// Get list of data for the tenant
     /// </summary>
-    public static async Task<List<T>> ToListAsync<T>(this IRepository<T> repository, Expression<Func<T, bool>> predicate)
-        where T : class
-    {
-        return await repository.Where(predicate).ToListAsync();
-    }
+    public static async Task<List<T>> ToListAsync<T>
+        (
+        this IRepository<T> repository, 
+        Expression<Func<T,bool>> predicate
+        ) where T : class
+        => await repository.Entities.Where(predicate).ToListAsync();
 
     /// <summary>
     /// Order data for the tenant
@@ -109,7 +122,7 @@ public static class RepositoryExtensions
     public static DbCommand LoadStoredProc<T>(this IRepository<T> repository, string storedProcName)
         where T : class
     {
-       
+
         return repository.ApplicationDBContext.DbContext.LoadStoredProc(storedProcName);
     }
 
@@ -147,7 +160,9 @@ public static class RepositoryExtensions
     }
 
     private static void LoadEntity<T, T1, TProperty>(this IRepository<T> repository, T1 entity, Expression<Func<T1, TProperty>> propertyExpression)
-        where T : class where TProperty : class where T1 : class
+        where T : class
+        where TProperty : class 
+        where T1 : class
     {
         repository.ApplicationDBContext.DbContext.Entry(entity).Reference(propertyExpression).Load();
     }
@@ -160,7 +175,4 @@ public static class RepositoryExtensions
             repository.LoadEntity(entity, propertyExpression);
         }
     }
-
-
-
 }

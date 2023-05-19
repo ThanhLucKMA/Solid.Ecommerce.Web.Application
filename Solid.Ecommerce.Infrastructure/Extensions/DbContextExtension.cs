@@ -3,17 +3,17 @@ using Microsoft.Data.SqlClient;
 using System.Reflection;
 
 namespace Solid.Ecommerce.Infrastructure.Extensions;
+
 public static class DbContextExtension
 {
     private static readonly object ConnectionLocked = new object();
     /// <summary>
     /// Creates an initial DbCommand object based on a stored procedure name
     /// </summary>
-    /// <param name="context">target database context</param>
+    /// <param name="context">target database contex</param>
     /// <param name="storedProcName">target procedure name</param>
-    /// <param name="prependDefaultSchema">Prepend the default schema name to <paramref name="storedProcName"/> if explicitly defined in <paramref name="context"/></param>
+    /// <param name="prependDefaultSchema">Prepend the default schema name to <paramref name="storedProcName"/> if explicitly defined in <paramref name="context"/> </param>
     /// <returns></returns>
-
     public static DbCommand LoadStoredProc(this DbContext context, string storedProcName, bool prependDefaultSchema = true)
     {
         var conn = context.Database.GetDbConnection();
@@ -21,22 +21,20 @@ public static class DbContextExtension
         if (prependDefaultSchema)
         {
             var schemaName = context.Model.GetDefaultSchema();
-            if (schemaName != null)
+            if(schemaName != null)
             {
                 storedProcName = $"{schemaName}.{storedProcName}";
             }
-
         }
-
-        if (context.Database.CurrentTransaction != null)
+        if(context.Database.CurrentTransaction != null)
         {
             cmd.Transaction = context.Database.CurrentTransaction.GetDbTransaction();
         }
-
         cmd.CommandText = storedProcName;
         cmd.CommandType = CommandType.StoredProcedure;
         return cmd;
     }
+
 
     /// <summary>
     /// Creates a DbParameter object and adds it to a DbCommand
@@ -47,6 +45,7 @@ public static class DbContextExtension
     /// <param name="direction"></param>
     /// <param name="configureParam"></param>
     /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
     public static DbCommand WithSqlParam(this DbCommand cmd, string paramName, object paramValue, ParameterDirection direction = ParameterDirection.Input, Action<DbParameter> configureParam = null)
     {
         if (string.IsNullOrEmpty(cmd.CommandText) && cmd.CommandType != CommandType.StoredProcedure)
@@ -70,6 +69,7 @@ public static class DbContextExtension
     /// <param name="paramName"></param>
     /// <param name="configureParam"></param>
     /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
     public static DbCommand WithSqlParam(this DbCommand cmd, string paramName, Action<DbParameter> configureParam = null)
     {
         if (string.IsNullOrEmpty(cmd.CommandText) && cmd.CommandType != CommandType.StoredProcedure)
@@ -92,6 +92,7 @@ public static class DbContextExtension
     /// <param name="paramName"></param>
     /// <param name="parameter"></param>
     /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
     public static DbCommand WithSqlParam(this DbCommand cmd, string paramName, SqlParameter parameter)
     {
         if (string.IsNullOrEmpty(cmd.CommandText) && cmd.CommandType != CommandType.StoredProcedure)
@@ -312,5 +313,4 @@ public static class DbContextExtension
 
         return result;
     }
-
 }

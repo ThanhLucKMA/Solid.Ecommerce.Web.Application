@@ -1,5 +1,7 @@
-﻿namespace Solid.Ecommerce.Infrastructure.Repositories;
-public class UnitOfWork: IUnitOfWork
+﻿
+namespace Solid.Ecommerce.Infrastructure.Repositories;
+
+public class UnitOfWork : IUnitOfWork
 {
     private Dictionary<string, object> Repositories { get; }
     private IDbContextTransaction _transaction;

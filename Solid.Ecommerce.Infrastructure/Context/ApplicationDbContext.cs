@@ -1,8 +1,12 @@
-﻿namespace Solid.Ecommerce.Infrastructure.Context;
-public class ApplicationDbContext: IApplicationDBContext
+﻿
+namespace Solid.Ecommerce.Infrastructure.Context;
+
+public class ApplicationDbContext : IApplicationDBContext
 {
     private DbFactoryContext _dbFactoryContext;
-    public ApplicationDbContext(DbFactoryContext dbFactoryContext) 
-        => this._dbFactoryContext = dbFactoryContext;
-    public DbContext DbContext => _dbFactoryContext.DbContext;
+    public ApplicationDbContext(DbFactoryContext dbFactoryContext )
+    {
+        this._dbFactoryContext = dbFactoryContext;
+    }
+    public DbContext DbContext => this._dbFactoryContext.DbContext;
 }

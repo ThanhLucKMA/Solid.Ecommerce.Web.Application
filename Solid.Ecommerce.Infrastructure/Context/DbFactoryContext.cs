@@ -1,6 +1,9 @@
 ﻿
+using Solid.Ecommerce.EntityModels.SqlServer.EfStructures;
+
 namespace Solid.Ecommerce.Infrastructure.Context;
-public class DbFactoryContext:IDisposable
+
+public class DbFactoryContext : IDisposable
 {
     private bool _disposed;
     private Func<SolidEcommerceDbContext> _instanceFunc;
@@ -10,7 +13,7 @@ public class DbFactoryContext:IDisposable
     {
         _instanceFunc = dbContextFactory;
     }
-    
+
     public void Dispose()
     {
         if (!_disposed && _dbContext != null)
@@ -19,5 +22,4 @@ public class DbFactoryContext:IDisposable
             _dbContext.Dispose();
         }
     }
-   
 }

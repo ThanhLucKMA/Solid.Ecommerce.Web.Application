@@ -5,8 +5,6 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Ecommerce.Domain", "Solid.Ecommerce.Domain\Solid.Ecommerce.Domain.csproj", "{93578192-4742-45F7-828F-0F751B2E9907}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Ecommerce.UI.Test", "Solid.Ecommerce.UI.Test\Solid.Ecommerce.UI.Test.csproj", "{ACDA0BD1-E1A1-44DB-8538-F5EDEBAFC902}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Ecommerce.Shared.EntityModels.SqlServer", "Solid.Ecommerce.Shared.EntityModels.SqlServer\Solid.Ecommerce.Shared.EntityModels.SqlServer.csproj", "{24A4B8E2-49D9-48CD-B17B-7600C2C5B930}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Ecommerce.Application", "Solid.Ecommerce.Application\Solid.Ecommerce.Application.csproj", "{5BC3EB9B-B5E7-40C8-8EB5-59E5CB2E4200}"
@@ -16,6 +14,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Ecommerce.Services", "Solid.Ecommerce.Services\Solid.Ecommerce.Services.csproj", "{7A5CDB36-C371-4C65-8098-B78E43DC90C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Ecommerce.Web", "Solid.Ecommerce.Web\Solid.Ecommerce.Web.csproj", "{73B69EC6-915E-4654-A7FC-5D886A5A1605}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{39BF3F32-D08A-40FC-A854-4558986C637E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,6 @@ Global
 		{93578192-4742-45F7-828F-0F751B2E9907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93578192-4742-45F7-828F-0F751B2E9907}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93578192-4742-45F7-828F-0F751B2E9907}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ACDA0BD1-E1A1-44DB-8538-F5EDEBAFC902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ACDA0BD1-E1A1-44DB-8538-F5EDEBAFC902}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ACDA0BD1-E1A1-44DB-8538-F5EDEBAFC902}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ACDA0BD1-E1A1-44DB-8538-F5EDEBAFC902}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24A4B8E2-49D9-48CD-B17B-7600C2C5B930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24A4B8E2-49D9-48CD-B17B-7600C2C5B930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24A4B8E2-49D9-48CD-B17B-7600C2C5B930}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{73B69EC6-915E-4654-A7FC-5D886A5A1605}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73B69EC6-915E-4654-A7FC-5D886A5A1605}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73B69EC6-915E-4654-A7FC-5D886A5A1605}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39BF3F32-D08A-40FC-A854-4558986C637E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39BF3F32-D08A-40FC-A854-4558986C637E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39BF3F32-D08A-40FC-A854-4558986C637E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39BF3F32-D08A-40FC-A854-4558986C637E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
