@@ -21,17 +21,16 @@ public class IndexModel : PageModel
         _productService = productService;
     }
 
-    public async Task  OnGetAsync()
+  /*  public async Task  OnGetAsync()
     {
-        /*
+        
         Products = await _productService.GetAll();
         
        var productViewModel = Products[4];
        
         
         var p = _productService.MapViewModelTo(productViewModel);
-        */
 
-    }
+    }*/
    
 }

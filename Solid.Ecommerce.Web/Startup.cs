@@ -53,12 +53,30 @@ public class Startup
 
 
         services.AddRazorPages();
+
+        //Set Session cookie flag
         services.AddSession(options =>
         {
-            options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
+            options.IdleTimeout = TimeSpan.FromMinutes(30);//Thoi gian gioi han session 
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
         });
+
+        //Set HSTS 
+        services.AddHsts(options =>
+        {
+            options.IncludeSubDomains = true;
+            options.MaxAge = TimeSpan.FromDays(365);
+        });
+
+        //Set Anti CSRF
+        services.AddAntiforgery(options =>
+        {
+            options.FormFieldName = "_AntiCSRFToken";//Chống giả mạo (1)
+            options.HeaderName = "X-Anti-Xsrf-Token";// (2)
+        });
+
         /*call service manual*/
         services.EcommerceInfrastructureDatabase(Configuration);//dependency injection
         services.AddDataServices();
@@ -80,7 +98,8 @@ public class Startup
 
         app.UseWebOptimizer();
         app.UseStaticFiles();
-        
+
+        app.UseHttpsRedirection();//Tất cả các Http request sẽ được gửi bằng HTTPS
 
         app.UseSession();
         app.UseAuthentication();

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\ASP.NET Core(.NET 7)\Workspace\Solid.Ecommere.Web.Graduate\Solid.Ecommerce.EntityModels.SqlServer\Solid.Ecommerce.EntityModels.SqlServer.csproj" />
     <ProjectReference Include="..\Solid.Ecommerce.Shared.EntityModels.SqlServer\Solid.Ecommerce.Shared.EntityModels.SqlServer.csproj" />
   </ItemGroup>
 
