@@ -1,14 +1,23 @@
-﻿
+
+using Solid.Ecommerce.Application.Interfaces.Common;
+using Solid.Ecommerce.Application.Interfaces.Repositories;
+using Solid.Ecommerce.Infrastructure.Context;
+
+
 namespace Solid.Ecommerce.Infrastructure.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {
     public IApplicationDBContext ApplicationDBContext { get; private set; }
 
+
     public DbSet<T> Entities => ApplicationDBContext.DbContext.Set<T>();
-    //*Constructor*//*
-    public Repository(IApplicationDBContext applicationDBContext)
-        => ApplicationDBContext = applicationDBContext;
+   
+
+    public Repository(IApplicationDBContext applicationDbContext)
+    {
+        ApplicationDBContext = applicationDbContext;
+    }
 
     public async Task<IList<T>> GetAllAsync() => await Entities.ToListAsync<T>();
 
